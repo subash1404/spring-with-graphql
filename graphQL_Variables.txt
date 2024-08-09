@@ -1,0 +1,86 @@
+Query:
+
+query student($id:Float){
+  student(id:$id) {
+    id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects(subjectFilter: [All]) {
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+Variables:
+{
+  "id":2
+}
+
+Query w/ multiple variables:
+
+query student($id:Float,$subName : [SubjectFilter]){
+  student(id:$id) {
+    id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects(subjectFilter: $subName) {
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+
+Varaibles:
+{
+  "id":2,
+  "subName":["Java","MongoDB"]
+}
+
+
+
+Mutation:
+mutation createStudent($createStudentRequest : CreateStudentRequest) {
+  createStudent(createStudentRequest : $createStudentRequest) {
+    id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects(subjectFilter: [All]) {
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+
+Variables:
+{
+   "createStudentRequest" : {
+    "city":"vhbjh",
+    "email":"gbjhk",
+    "firstName":"hgjk",
+    "lastName":"ghjkjl",
+    "street":"hbkl",
+    "learningSubjects":[{
+      "marksObtained":678,
+      "subjectName":"gcfhbj"
+    }]
+  }
+}
+
